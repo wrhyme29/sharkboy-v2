@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
 		rb = GetComponent<Rigidbody2D>();
 		velocitySign = 0;
 		orientation = 1;
@@ -23,8 +22,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-		velocitySign = Sign((int)horizontalInput);
+        if(Input.GetButtonDown("Left")){
+			velocitySign = -1;
+		}
+		if(Input.GetButtonDown("Right")){
+			velocitySign = 1;
+		}
+		if(Input.GetButtonUp("Left") || Input.GetButtonUp("Right")){
+			velocitySign = 0;
+		}
     }
 
 	void FixedUpdate(){
