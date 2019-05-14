@@ -26,7 +26,6 @@ public class PlatformShooter : MonoBehaviour
 
 	GameObject createPlatform(Vector3 mousePosition)
 	{
-		 
 		GameObject platform = ps.spawnPlatform(cam.ScreenToWorldPoint(mousePosition), Quaternion.identity);
 		return platform;
 	}
