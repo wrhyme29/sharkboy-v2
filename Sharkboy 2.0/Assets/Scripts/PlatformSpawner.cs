@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformSpawner
+public class PlatformSpawner : MonoBehaviour
 {
 	ObjectPooler objectPooler;
 
