@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 	private int orientation;
 
 	public float speed = 5f;
+	public float jumpForce = 500f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,10 @@ public class PlayerController : MonoBehaviour
 		if(Input.GetButtonUp("Left") || Input.GetButtonUp("Right")){
 			velocitySign = 0;
 		}
+
+		if(Input.GetButtonDown("Jump")){
+			Jump();
+		}
     }
 
 	void FixedUpdate(){
@@ -49,6 +54,10 @@ public class PlayerController : MonoBehaviour
 		Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+	}
+
+	void Jump(){
+		rb.AddForce(new Vector2(0, jumpForce));
 	}
 
 	private int Sign(int number) {
