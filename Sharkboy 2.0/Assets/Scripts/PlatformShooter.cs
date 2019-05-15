@@ -8,6 +8,7 @@ public class PlatformShooter : MonoBehaviour
     private PlatformSpawner ps;
 	Vector3 mousePosition;
 	public Camera cam;
+	public float TimeToLive = 7f;
 	
 	// Start is called before the first frame update
     void Start()
@@ -27,6 +28,8 @@ public class PlatformShooter : MonoBehaviour
 	GameObject createPlatform(Vector3 mousePosition)
 	{
 		GameObject platform = ps.spawnPlatform(cam.ScreenToWorldPoint(mousePosition), Quaternion.identity);
+		platform.GetComponent<PlatformStats>().DecayTimer = TimeToLive;
+
 		return platform;
 	}
 }
