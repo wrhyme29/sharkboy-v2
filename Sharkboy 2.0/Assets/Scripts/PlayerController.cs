@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 	public float speed = 5f;
 	public float jumpForce = 500f;
 	float aSpeed;
+	float vSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -39,16 +40,19 @@ public class PlayerController : MonoBehaviour
 		if(Input.GetButtonDown("Jump")){
 			Jump();
 		}
+
+		animator.SetFloat("VerticalVelocity", vSpeed);
     }
 
 	void FixedUpdate(){
 		UpdateVelocity();
 		if(velocitySign != orientation && velocitySign != 0) Flip();
+		vSpeed = rb.velocity.y;
 	}
 
 	
 	void UpdateVelocity(){
-		rb.velocity = new Vector2(speed * velocitySign, 0);
+		rb.velocity = new Vector2(speed * velocitySign, rb.velocity.y);
 		aSpeed = Mathf.Abs(rb.velocity.x);
 		animator.SetFloat("Speed",aSpeed);
 	}
@@ -63,6 +67,7 @@ public class PlayerController : MonoBehaviour
 
 	void Jump(){
 		rb.AddForce(new Vector2(0, jumpForce));
+		animator.Play("player_jump");
 	}
 
 	private int Sign(int number) {
