@@ -47,13 +47,11 @@ public class PlayerController : MonoBehaviour
 			headCollider.enabled = false;
 			crouching = true;
 			animator.SetBool("Crouching", crouching);
-			Debug.Log("crouched");
 		}
 
 		if(Input.GetButtonUp("Down")){
 			headCollider.enabled = true;
 			crouching = false;
-			Debug.Log("standing");
 			animator.SetBool("Crouching", crouching);
 		}
 
