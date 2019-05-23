@@ -576,6 +576,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 696847882}
   m_PrefabAsset: {fileID: 0}
+--- !u!58 &481526531 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3512609807597099269, guid: cf3703f50ff8d394ca63f353e4867195,
+    type: 3}
+  m_PrefabInstance: {fileID: 696847882}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &481526535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,6 +839,20 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 481526537}
+    - target: {fileID: 1008596617, guid: cf3703f50ff8d394ca63f353e4867195, type: 3}
+      propertyPath: headCollider
+      value: 
+      objectReference: {fileID: 481526531}
+    - target: {fileID: 3512609807597099274, guid: cf3703f50ff8d394ca63f353e4867195,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3512609807597099269, guid: cf3703f50ff8d394ca63f353e4867195,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf3703f50ff8d394ca63f353e4867195, type: 3}
 --- !u!1 &1551311092

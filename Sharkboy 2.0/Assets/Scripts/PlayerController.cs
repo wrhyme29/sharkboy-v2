@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody2D rb;
 	private int orientation;
 	public Animator animator;
+	public Collider2D headCollider;
 
 	public float speed = 5f;
 	public float jumpForce = 500f;
 	float aSpeed;
 	float vSpeed;
+	bool crouching = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,20 @@ public class PlayerController : MonoBehaviour
 
 		if(Input.GetButtonDown("Jump")){
 			Jump();
+		}
+
+		if(Input.GetButtonDown("Down")){
+			headCollider.enabled = false;
+			crouching = true;
+			animator.SetBool("Crouching", crouching);
+			Debug.Log("crouched");
+		}
+
+		if(Input.GetButtonUp("Down")){
+			headCollider.enabled = true;
+			crouching = false;
+			Debug.Log("standing");
+			animator.SetBool("Crouching", crouching);
 		}
 
 		animator.SetFloat("VerticalVelocity", vSpeed);
