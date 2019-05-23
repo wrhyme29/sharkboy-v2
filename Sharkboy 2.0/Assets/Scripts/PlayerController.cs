@@ -8,14 +8,17 @@ public class PlayerController : MonoBehaviour
 	private int velocitySign;
 	private Rigidbody2D rb;
 	private int orientation;
+	public Animator animator;
 
 	public float speed = 5f;
 	public float jumpForce = 500f;
+	float aSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
 		rb = GetComponent<Rigidbody2D>();
+		animator = GetComponent<Animator>();
 		velocitySign = 0;
 		orientation = 1;
     }
@@ -43,9 +46,11 @@ public class PlayerController : MonoBehaviour
 		if(velocitySign != orientation && velocitySign != 0) Flip();
 	}
 
-
+	
 	void UpdateVelocity(){
 		rb.velocity = new Vector2(speed * velocitySign, 0);
+		aSpeed = Mathf.Abs(rb.velocity.x);
+		animator.SetFloat("Speed",aSpeed);
 	}
 
 
