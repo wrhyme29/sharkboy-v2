@@ -16,12 +16,12 @@ public class PlayerController : MonoBehaviour
 	float aSpeed;
 	float vSpeed;
 	bool crouching = false;
+	bool touchingGround = true;
 
     // Start is called before the first frame update
     void Start()
     {
 		rb = GetComponent<Rigidbody2D>();
-		animator = GetComponent<Animator>();
 		velocitySign = 0;
 		orientation = 1;
     }
@@ -40,7 +40,8 @@ public class PlayerController : MonoBehaviour
 		}
 
 		if(Input.GetButtonDown("Jump")){
-			Jump();
+			if(touchingGround)	
+				Jump();
 		}
 
 		if(Input.GetButtonDown("Down")){
@@ -82,7 +83,16 @@ public class PlayerController : MonoBehaviour
 	void Jump(){
 		rb.AddForce(new Vector2(0, jumpForce));
 		animator.Play("player_jump");
+		touchingGround = false;
 	}
+
+	void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Ground"))
+        {
+            touchingGround = true;
+        }
+    }
 
 	private int Sign(int number) {
       return number < 0 ? -1 : (number > 0 ? 1 : 0);
