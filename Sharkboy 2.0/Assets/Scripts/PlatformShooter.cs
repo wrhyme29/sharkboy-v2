@@ -23,13 +23,39 @@ public class PlatformShooter : MonoBehaviour
 			mousePosition = Input.mousePosition;
 			createPlatform(mousePosition);
 		}
+		if(Input.GetMouseButtonDown(1)){
+			mousePosition = Input.mousePosition;
+			destroyPlatform(mousePosition);
+		}
 	}
 
 	GameObject createPlatform(Vector3 mousePosition)
 	{
-		GameObject platform = ps.spawnPlatform(cam.ScreenToWorldPoint(mousePosition), Quaternion.identity);
+		//this somewhat works, research changing this to an overlap circle to cover a threshold
+		Vector2 mousePos = cam.ScreenToWorldPoint(mousePosition); 
+		RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+		//if anything is collided
+		if (hit.collider != null)
+		{
+			Debug.Log(hit.collider.name);
+			return null;
+		}
+		GameObject platform = ps.spawnPlatform(mousePos, Quaternion.identity);
 		platform.GetComponent<PlatformStats>().DecayTimer = TimeToLive;
 
 		return platform;
+	}
+
+	Transform destroyPlatform(Vector3 mousePosition){
+		Vector2 mousePos = cam.ScreenToWorldPoint(mousePosition); 
+		RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+		//if anything is collided
+		if (hit.collider != null)
+		{
+			hit.transform.gameObject.SetActive(false);
+			return hit.transform;
+		}
+
+		return null;
 	}
 }
