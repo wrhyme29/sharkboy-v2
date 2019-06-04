@@ -36,32 +36,13 @@ public class PlatformShooter : MonoBehaviour
 	{
 		Vector2 mousePos = cam.ScreenToWorldPoint(mousePosition); 
 		
-		Collider2D playerHit = Physics2D.OverlapCircle(mousePos, platformPlayerCheckRadius);
-		//if anything is collided
-		if (playerHit != null)
-		{
-			Debug.Log(playerHit.name);
-			if(playerHit.name == "Player")
-				return null;
-		}
-
-		Collider2D groundHit = Physics2D.OverlapCircle(mousePos, platformGroundCheckRadius);
-		//if anything is collided
-		if (groundHit != null)
-		{
-			Debug.Log(groundHit.name);
-			if(groundHit.name == "Ground")
-				return null;
-		}
-
-		Collider2D platformHit = Physics2D.OverlapCircle(mousePos, platformPlatformCheckRadius);
-		//if anything is collided
-		if (platformHit != null)
-		{
-			Debug.Log(platformHit.name);
-			if(platformHit.name == "Platform(Clone)")
-				return null;
-		}
+		if(checkForPlatforms("Player", mousePos, platformPlayerCheckRadius))
+			return null;
+		if(checkForPlatforms("Ground", mousePos, platformGroundCheckRadius))
+			return null;
+		if(checkForPlatforms("Platform(Clone)", mousePos, platformPlatformCheckRadius))
+			return null;
+		
 		GameObject platform = ps.spawnPlatform(mousePos, Quaternion.identity);
 		platform.GetComponent<PlatformStats>().DecayTimer = TimeToLive;
 
@@ -78,5 +59,18 @@ public class PlatformShooter : MonoBehaviour
 			return hit.transform;
 		}
 		return null;
+	}
+
+	bool checkForPlatforms(string name, Vector2 mousePos, float radius){
+		Collider2D hit = Physics2D.OverlapCircle(mousePos, radius);
+		//if anything is collided
+		if (hit != null)
+		{
+			Debug.Log(hit.name);
+			if(hit.name == name)
+				return true;
+		}
+
+		return false;
 	}
 }
