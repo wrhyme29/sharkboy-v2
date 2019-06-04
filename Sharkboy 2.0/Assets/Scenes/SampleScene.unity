@@ -608,6 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 519420031}
   TimeToLive: 10
+  platformCheckRadius: 0.9
 --- !u!95 &481526537
 Animator:
   serializedVersion: 3
