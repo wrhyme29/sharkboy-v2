@@ -14,9 +14,12 @@ GameObject:
   - component: {fileID: 3512609807597099269}
   - component: {fileID: 3512609807597099273}
   - component: {fileID: 1008596617}
+  - component: {fileID: 481526537}
+  - component: {fileID: 481526535}
+  - component: {fileID: 481526536}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,11 +133,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1008596617
 MonoBehaviour:
@@ -148,5 +151,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a97c4284d63bf44e845f4d3cb961c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerState: 2
+  animator: {fileID: 481526537}
+  headCollider: {fileID: 3512609807597099269}
   speed: 5
+  jumpForce: 1200
+--- !u!95 &481526537
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3512609807597099268}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c7190e54afde0b74d82d117058f9deb4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &481526535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3512609807597099268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b750f6148a929f40a8d8fd0de5d3dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &481526536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3512609807597099268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1e05c20cec2bc4087901a86fb544ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  TimeToLive: 10
+  platformPlayerCheckRadius: 0.9
+  platformGroundCheckRadius: 0.5
+  platformPlatformCheckRadius: 0.2
