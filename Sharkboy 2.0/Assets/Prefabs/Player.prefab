@@ -95,7 +95,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 3512609807597099268}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 863e80de791bac6499b665e6dfb80dfa, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -111,7 +111,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 3512609807597099268}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 863e80de791bac6499b665e6dfb80dfa, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
