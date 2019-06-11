@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 	bool touchingGround = true;
 	bool hitByEnemy = false;
 	public int currLevel;
+	bool controlLocked;
 
     // Start is called before the first frame update
     void Start()
@@ -27,39 +28,42 @@ public class PlayerController : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 		velocitySign = 0;
 		orientation = 1;
+		controlLocked = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Left")){
-			velocitySign = -1;
-		}
-		if(Input.GetButtonDown("Right")){
-			velocitySign = 1;
-		}
-		if(Input.GetButtonUp("Left") || Input.GetButtonUp("Right")){
-			velocitySign = 0;
-		}
+		if(!controlLocked){
+			if(Input.GetButtonDown("Left")){
+				velocitySign = -1;
+			}
+			if(Input.GetButtonDown("Right")){
+				velocitySign = 1;
+			}
+			if(Input.GetButtonUp("Left") || Input.GetButtonUp("Right")){
+				velocitySign = 0;
+			}
 
-		if(Input.GetButtonDown("Jump")){
-			if(touchingGround)	
-				Jump();
-		}
+			if(Input.GetButtonDown("Jump")){
+				if(touchingGround)	
+					Jump();
+			}
 
-		if(Input.GetButtonDown("Down")){
-			headCollider.enabled = false;
-			crouching = true;
-			animator.SetBool("Crouching", crouching);
-		}
+			if(Input.GetButtonDown("Down")){
+				headCollider.enabled = false;
+				crouching = true;
+				animator.SetBool("Crouching", crouching);
+			}
 
-		if(Input.GetButtonUp("Down")){
-			headCollider.enabled = true;
-			crouching = false;
-			animator.SetBool("Crouching", crouching);
-		}
+			if(Input.GetButtonUp("Down")){
+				headCollider.enabled = true;
+				crouching = false;
+				animator.SetBool("Crouching", crouching);
+			}
 
-		animator.SetFloat("VerticalVelocity", vSpeed);
+			animator.SetFloat("VerticalVelocity", vSpeed);
+		}
     }
 
 	void FixedUpdate(){
@@ -98,7 +102,8 @@ public class PlayerController : MonoBehaviour
     }
 
 	public void HitByEnemy(){
-		Debug.Log("The player has been hit");
+		controlLocked = true;
+		velocitySign = 0;
 		animator.Play("player_fainting");
 		Invoke("LoadScene", 2.5f);
 	}
