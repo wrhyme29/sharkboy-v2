@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour
 	float vSpeed;
 	bool crouching = false;
 	bool touchingGround = true;
+	bool hitByEnemy = false;
+	public int currLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -93,6 +96,16 @@ public class PlayerController : MonoBehaviour
             touchingGround = true;
         }
     }
+
+	public void HitByEnemy(){
+		Debug.Log("The player has been hit");
+		animator.Play("player_fainting");
+		Invoke("LoadScene", 2.5f);
+	}
+
+	private void LoadScene(){
+		SceneManager.LoadScene(currLevel);
+	}
 
 	private int Sign(int number) {
       return number < 0 ? -1 : (number > 0 ? 1 : 0);

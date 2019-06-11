@@ -13,6 +13,7 @@ public class PickupCoin : MonoBehaviour
 		gs = GameStats.Instance;
 		text =  GameObject.Find("CoinsText").GetComponent<TextMeshProUGUI>();
 	}
+
     void OnTriggerEnter2D(Collider2D col)
     {
 		if(!locked){
