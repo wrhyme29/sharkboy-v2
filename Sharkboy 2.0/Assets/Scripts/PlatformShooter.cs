@@ -12,6 +12,7 @@ public class PlatformShooter : MonoBehaviour
 	public float platformPlayerCheckRadius = 0.9f;
 	public float platformGroundCheckRadius = 0.5f;
 	public float platformPlatformCheckRadius = 0.2f;
+	public float platformEnemyCheckRadius = 1.1f;
 	
 	// Start is called before the first frame update
     void Start()
@@ -41,6 +42,8 @@ public class PlatformShooter : MonoBehaviour
 		if(checkForPlatforms("Ground", mousePos, platformGroundCheckRadius))
 			return null;
 		if(checkForPlatforms("Platform(Clone)", mousePos, platformPlatformCheckRadius))
+			return null;
+		if(checkForPlatforms("Enemy", mousePos, platformEnemyCheckRadius))
 			return null;
 		
 		GameObject platform = ps.spawnPlatform(mousePos, Quaternion.identity);

@@ -10,6 +10,7 @@ public class EnemyPatrolling : MonoBehaviour
 	public float speed = 2f;
 	private Rigidbody2D rb;
 	private int orientation;
+	private bool locked = false;
 
 	 void Start()
     {
@@ -21,6 +22,17 @@ public class EnemyPatrolling : MonoBehaviour
     {
         UpdateVelocity();
 		if(CheckForFlip()) Flip();
+    }
+
+	void OnCollisionEnter2D(Collision2D collision)
+    {
+		if(collision.collider.name == "Platform(Clone)"){
+			if(!locked){
+				locked = true;
+				Flip();
+				locked = false;
+			}
+		}
     }
 
 	void UpdateVelocity(){
