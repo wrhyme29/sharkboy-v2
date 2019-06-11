@@ -11,7 +11,8 @@ public class PickupCoin : MonoBehaviour
 
 	void Start(){
 		gs = GameStats.Instance;
-		text.text = "Coins: " + gs.coins;
+		text =  GameObject.Find("CoinsText").GetComponent<TextMeshProUGUI>();
+		
 
 	}
     void OnTriggerEnter2D(Collider2D col)
