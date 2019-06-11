@@ -55,8 +55,10 @@ public class PlatformShooter : MonoBehaviour
 		//if anything is collided
 		if (hit.collider != null)
 		{
-			hit.transform.gameObject.SetActive(false);
-			return hit.transform;
+			if(hit.collider.name == "Platform(Clone)"){
+				hit.transform.gameObject.SetActive(false);
+				return hit.transform;
+			}
 		}
 		return null;
 	}
