@@ -9,16 +9,32 @@ public class PlatformShooter : MonoBehaviour
 	Vector3 mousePosition;
 	public Camera cam;
 	public float TimeToLive = 7f;
-	public float platformPlayerCheckRadius = 0.9f;
-	public float platformGroundCheckRadius = 0.5f;
 	public float platformPlatformCheckRadius = 0.2f;
-	public float platformEnemyCheckRadius = 1.1f;
+	public GameObject sceneObjects;
+	public List<GameObject> sceneObjectsList;
+
+	private Dictionary<string, float> platformCheckRadiusDict;
 	
 	// Start is called before the first frame update
     void Start()
     {
       ps = GetComponent<PlatformSpawner>();
+	  platformCheckRadiusDict = new Dictionary<string,float>();
+	  sceneObjects = GameObject.Find("SceneObjects");
+	  UpdateDict();
     }
+
+	void UpdateDict(){
+		sceneObjectsList = sceneObjects.GetComponent<ListOfObjects>().sceneObjects;
+		string oName = "";
+		float oRadius = 0;
+		foreach(GameObject obj in sceneObjectsList){
+			oName = obj.name;
+			oRadius = obj.GetComponent<PlatformRadius>().radius;
+			platformCheckRadiusDict.Add(oName, oRadius);
+		}
+
+	}
 
     // Update is called once per frame
     void Update()
@@ -37,14 +53,13 @@ public class PlatformShooter : MonoBehaviour
 	{
 		Vector2 mousePos = cam.ScreenToWorldPoint(mousePosition); 
 		
-		if(checkForPlatforms("Player", mousePos, platformPlayerCheckRadius))
-			return null;
-		if(checkForPlatforms("Ground", mousePos, platformGroundCheckRadius))
-			return null;
 		if(checkForPlatforms("Platform(Clone)", mousePos, platformPlatformCheckRadius))
 			return null;
-		if(checkForPlatforms("Enemy", mousePos, platformEnemyCheckRadius))
+
+		foreach(string tname in platformCheckRadiusDict.Keys){
+			if(checkForPlatforms(tname, mousePos, platformCheckRadiusDict[tname]))
 			return null;
+		}
 		
 		GameObject platform = ps.spawnPlatform(mousePos, Quaternion.identity);
 		platform.GetComponent<PlatformStats>().DecayTimer = TimeToLive;

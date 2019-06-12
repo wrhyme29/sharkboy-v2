@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 9094611279414400029}
   - component: {fileID: 9094611279414400019}
   - component: {fileID: 9094611279414400018}
+  - component: {fileID: 7550029791888881541}
   m_Layer: 0
   m_Name: Gear
   m_TagString: Untagged
@@ -161,3 +162,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f6815c1d7ab994ab36052c2eec6a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7550029791888881541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9094611279414400028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e582d814ecc964d880c194133873bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.5
