@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 	float aSpeed;
 	float vSpeed;
 	bool crouching = false;
-	bool touchingGround = true;
+	 bool touchingGround = true;
 	bool hitByEnemy = false;
 	public int currLevel;
 	bool controlLocked;
@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
         {
             touchingGround = true;
         }
+
     }
 
 	public void HitByEnemy(){
