@@ -13,7 +13,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.7, y: -0.4}
+  m_Offset: {x: -0.2, y: -0.3}
   m_Size: {x: 2.6, y: 0.7}
   m_Direction: 1
 --- !u!1001 &2770836952400474902
@@ -23,20 +23,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6028945970793252594, guid: 6e390842f3ea49c4a96fd09aefe32ac1,
-        type: 3}
-      propertyPath: m_Name
-      value: Static Platform
-      objectReference: {fileID: 0}
     - target: {fileID: 4842676277686610198, guid: 6e390842f3ea49c4a96fd09aefe32ac1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.0688133
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4842676277686610198, guid: 6e390842f3ea49c4a96fd09aefe32ac1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.086342774
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4842676277686610198, guid: 6e390842f3ea49c4a96fd09aefe32ac1,
         type: 3}
@@ -83,13 +78,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8787830302100957794, guid: 6e390842f3ea49c4a96fd09aefe32ac1,
+    - target: {fileID: 6028945970793252594, guid: 6e390842f3ea49c4a96fd09aefe32ac1,
+        type: 3}
+      propertyPath: m_Name
+      value: Static Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945022491169463696, guid: 6e390842f3ea49c4a96fd09aefe32ac1,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 43929206921070830, guid: a9ea518619ceb5748a4991e6eba0c835,
         type: 3}
-    - target: {fileID: 7945022491169463696, guid: 6e390842f3ea49c4a96fd09aefe32ac1,
+    - target: {fileID: 8787830302100957794, guid: 6e390842f3ea49c4a96fd09aefe32ac1,
         type: 3}
       propertyPath: m_Sprite
       value: 
